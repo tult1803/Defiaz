@@ -90,6 +90,7 @@ Widget containerViewMore(BuildContext context, {Widget? widget}) {
 Widget containerHotNews(
   context, {
   size,
+  id,
   imgUrl,
   title,
   content,
@@ -100,6 +101,7 @@ Widget containerHotNews(
       String htmlData = "<body>$content</body>";
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => DetailBlog(
+          id: id,
           htmlData: htmlData,
           title: "$title",
           mainUrl: imgUrl,
@@ -137,13 +139,14 @@ Widget containerHotNews(
 
 //Dùng cho bài viết đã lưu
 Widget containerFavorite(context,
-    {size, imgUrl, title, author, content, redirectUrl}) {
+    {size, imgUrl, title, author, content, redirectUrl, id}) {
   return GestureDetector(
     onTap: () {
       if (content != null) {
         String htmlData = "<body>$content</body>";
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => DetailBlog(
+              id: id,
               htmlData: htmlData,
               title: "$title",
               mainUrl: imgUrl,

@@ -41,6 +41,7 @@ class _CarouselSliderState extends State<SpecialNews> {
                 itemBuilder: (context, index, realIndex) {
                   return slideHeight(
                     context: context,
+                      id: data![index].id,
                       imgUrl: data![index].yoastHeadJson!.ogImage!.first.url,
                       title: data![index].title!.rendered,
                       contentDetail: data![index].content!.rendered,

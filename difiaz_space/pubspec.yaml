@@ -40,6 +40,7 @@ dependencies:
   url_launcher: ^6.0.12
   infinite_scroll_pagination: ^3.1.0
   shimmer: ^2.0.0
+  flutter_share: ^2.0.0
   #  social_share: ^2.1.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -79,6 +80,7 @@ flutter:
     - images/user.png
     - images/logoDe.png
     - images/noti.png
+    - images/send.png
     - images/icon_list.png
     - images/icon_dot.png
     - images/media01.png

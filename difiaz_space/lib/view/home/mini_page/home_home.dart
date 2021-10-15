@@ -26,7 +26,7 @@ class _HomeHomeState extends State<HomeHome> {
             const SizedBox(height: 32,),
             containerTitle("NỔI BẬT"),
             OutStanding(categories: 76,),
-            containerTitle("SÀN GIAO "),
+            containerTitle("SÀN GIAO DỊCH", widthSizeBox: 180),
             NewestVsViews(categories: 70,),
             containerTitle("XEM NHIỀU"),
             NewestVsViews(categories: 73,),

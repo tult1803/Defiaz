@@ -40,6 +40,7 @@ class _CarouselSliderState extends State<NewestVsViews> {
                 itemBuilder: (context, index, realIndex) {
                   return slideWeight(
                       context: context,
+                      id: data![index].id,
                       contentDetail: data![index].content!.rendered,
                       imgUrl: data![index].yoastHeadJson!.ogImage!.first.url,
                       title: data![index].yoastHeadJson!.title,
@@ -59,6 +60,7 @@ class _CarouselSliderState extends State<NewestVsViews> {
                 itemBuilder: (context, index, realIndex) {
                   return slideWeight(
                       context: context,
+                      id: data![index + 4].id,
                       contentDetail: data![index + 4].content!.rendered,
                       imgUrl: data![index + 4].yoastHeadJson!.ogImage!.first.url,
                       title: data![index + 4].yoastHeadJson!.title,

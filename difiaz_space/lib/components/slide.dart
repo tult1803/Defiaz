@@ -6,13 +6,14 @@ import 'package:difiaz_space/presenter/home/show_detail_blog.dart';
 import 'package:flutter/material.dart';
 
 //Slider thiên về chiều cao
-Widget slideHeight({context ,imgUrl, title, author, time, type, views, contentDetail, redirectUrl}) {
+Widget slideHeight({context ,id,imgUrl, title, author, time, type, views, contentDetail, redirectUrl}) {
   return GestureDetector(
     onTap: () {
      if(contentDetail != null){
        String htmlData = "<body>$contentDetail</body>";
        Navigator.of(context).push(MaterialPageRoute(
          builder: (context) => DetailBlog(
+           id: id,
            htmlData: htmlData,
            title: "$title",
            mainUrl: imgUrl,
@@ -128,13 +129,14 @@ Widget slideHeight({context ,imgUrl, title, author, time, type, views, contentDe
 //Slider thiên về chiều dài
 
 Widget slideWeight(
-    {required BuildContext context, imgUrl, title, content, contentDetail, redirectUrl}) {
+    {required BuildContext context, id, imgUrl, title, content, contentDetail, redirectUrl}) {
   var size = MediaQuery.of(context).size;
   return GestureDetector(
     onTap: () {
       String htmlData = "<body>$contentDetail</body>";
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => DetailBlog(
+          id: id,
           htmlData: htmlData,
           title: "$title",
           mainUrl: imgUrl,
@@ -192,13 +194,14 @@ Widget slideWeight(
 }
 
 Widget slideSearchPage(
-    {required BuildContext context, imgUrl, title, contentDetail, redirectUrl}) {
+    {required BuildContext context, imgUrl, id, title, contentDetail, redirectUrl}) {
   var size = MediaQuery.of(context).size;
   return GestureDetector(
     onTap: () {
       String htmlData = "<body>$contentDetail</body>";
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => DetailBlog(
+          id: id,
           redirectUrl: redirectUrl,
           htmlData: htmlData,
           title: "$title",

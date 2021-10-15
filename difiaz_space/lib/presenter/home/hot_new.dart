@@ -37,6 +37,7 @@ class _HotNewsState extends State<HotNews> {
                 containerHotNews(
                   context,
                   size: size,
+                  id: data![0].id,
                   imgUrl: data![0].yoastHeadJson!.ogImage!.first.url,
                   title: data![0].title?.rendered,
                   content: data![0].content!.rendered,
@@ -45,6 +46,7 @@ class _HotNewsState extends State<HotNews> {
                 containerHotNews(
                   context,
                   size: size,
+                  id: data![1].id,
                   imgUrl: data![1].yoastHeadJson!.ogImage!.first.url,
                   title: data![1].title?.rendered,
                   content: data![1].content!.rendered,
@@ -53,6 +55,7 @@ class _HotNewsState extends State<HotNews> {
                 containerHotNews(
                   context,
                   size: size,
+                  id: data![2].id,
                   imgUrl: data![2].yoastHeadJson!.ogImage!.first.url,
                   title: data![2].title?.rendered,
                   content: data![2].content!.rendered,
@@ -61,6 +64,7 @@ class _HotNewsState extends State<HotNews> {
                 containerHotNews(
                   context,
                   size: size,
+                  id: data![3].id,
                   imgUrl: data![3].yoastHeadJson!.ogImage!.first.url,
                   title: data![3].title?.rendered,
                   content: data![3].content!.rendered,

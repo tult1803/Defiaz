@@ -10,7 +10,6 @@ import '../../data_demo.dart';
 class OutStanding extends StatefulWidget {
   int categories;
 
-
   OutStanding({required this.categories});
 
   @override
@@ -20,9 +19,10 @@ class OutStanding extends StatefulWidget {
 class _WrapSliderState extends State<OutStanding> {
   List<CategoriesBlog>? data;
 
-  getData() async{
+  getData() async {
     GetCategoriesBlog categoriesBlog = GetCategoriesBlog();
-    data = await categoriesBlog.getData(categories: "${widget.categories}", page: "1", perPage: "4");
+    data = await categoriesBlog.getData(
+        categories: "${widget.categories}", page: "1", perPage: "4");
     return data;
   }
 
@@ -31,33 +31,41 @@ class _WrapSliderState extends State<OutStanding> {
     return FutureBuilder(
       future: getData(),
       builder: (context, snapshot) {
-        if(snapshot.hasData){
+        if (snapshot.hasData) {
           print('Categories ${widget.categories} has data');
           return Column(
             children: [
               slideWeight(
-                  context: context,
-                  imgUrl: data![0].yoastHeadJson!.ogImage!.first.url,
-                  title: data![0].yoastHeadJson!.title,
-                  content: data![0].yoastHeadJson!.description,
+                context: context,
+                id: data![0].id,
+                imgUrl: data![0].yoastHeadJson!.ogImage!.first.url,
+                title: data![0].yoastHeadJson!.title,
+                content: data![0].yoastHeadJson!.description,
                 contentDetail: data![0].content!.rendered,
                 redirectUrl: data![0].guid!.rendered,
               ),
               slideWeight(
-                  context: context,
-                  imgUrl: data![1].yoastHeadJson!.ogImage!.first.url,
-                  title: data![1].yoastHeadJson!.title,
-                  content: data![1].yoastHeadJson!.description,
+                context: context,
+                id: data![1].id,
+                imgUrl: data![1].yoastHeadJson!.ogImage!.first.url,
+                title: data![1].yoastHeadJson!.title,
+                content: data![1].yoastHeadJson!.description,
                 contentDetail: data![1].content!.rendered,
-                redirectUrl: data![1].guid!.rendered,),
+                redirectUrl: data![1].guid!.rendered,
+              ),
               slideWeight(
-                  context: context,
-                  imgUrl: data![2].yoastHeadJson!.ogImage!.first.url,
-                  title: data![2].yoastHeadJson!.title,
-                  content: data![2].yoastHeadJson!.description,
+                context: context,
+                id: data![2].id,
+                imgUrl: data![2].yoastHeadJson!.ogImage!.first.url,
+                title: data![2].yoastHeadJson!.title,
+                content: data![2].yoastHeadJson!.description,
                 contentDetail: data![2].content!.rendered,
-                redirectUrl: data![2].guid!.rendered,),
-              containerViewMore(context, widget: MainPage(index: 1,)),
+                redirectUrl: data![2].guid!.rendered,
+              ),
+              containerViewMore(context,
+                  widget: MainPage(
+                    index: 1,
+                  )),
             ],
           );
         }

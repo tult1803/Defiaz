@@ -37,6 +37,7 @@ class _SearchPageState extends State<SearchPage> {
                   itemCount: data!.length,
                   itemBuilder: (context, index, realIndex) {
                     return slideSearchPage(context: context,
+                        id: data![index].id,
                       imgUrl: data![index].yoastHeadJson!.ogImage!.first.url,
                       title: data![index].title!.rendered,
                     redirectUrl: data![index].guid!.rendered,

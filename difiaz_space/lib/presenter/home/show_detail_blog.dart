@@ -1,13 +1,24 @@
 import 'package:difiaz_space/components/component.dart';
+import 'package:difiaz_space/helpers/colors.dart';
+import 'package:difiaz_space/helpers/validate_data.dart';
+import 'package:difiaz_space/model/get/get_data_comments.dart';
+import 'package:difiaz_space/model/model_data_comment.dart';
+import 'package:difiaz_space/presenter/home/out_standing.dart';
+import 'package:difiaz_space/presenter/load_comments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DetailBlog extends StatefulWidget {
   String htmlData, title, mainUrl, redirectUrl;
+  int id;
 
-
-  DetailBlog({required this.htmlData, required this.title, required this.mainUrl,required this.redirectUrl});
+  DetailBlog(
+      {required this.id,
+      required this.htmlData,
+      required this.title,
+      required this.mainUrl,
+      required this.redirectUrl});
 
   @override
   _DetailBlogState createState() => _DetailBlogState();
@@ -22,10 +33,21 @@ class _DetailBlogState extends State<DetailBlog> {
     return Scaffold(
       appBar: AppBar(
         leading: leadingAppbar(context, colorIcon: Colors.black),
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 20.0),
-            child: SizedBox(height: 25, width: 25,child: Image(image: AssetImage("images/icon_dot.png"))),
+            padding: const EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+                onTap: () => shareBlog(
+                    title: widget.title,
+                    mainUrl: widget.mainUrl,
+                    redirectUrl: widget.redirectUrl),
+                child: const SizedBox(
+                    height: 25,
+                    width: 25,
+                    child: Icon(
+                      Icons.ios_share,
+                      color: Colors.blue,
+                    ))),
           ),
         ],
         backgroundColor: Colors.white,
@@ -44,14 +66,17 @@ class _DetailBlogState extends State<DetailBlog> {
           child: Column(
             children: [
               Container(
-                child:  ClipRRect(
+                child: ClipRRect(
                     borderRadius: BorderRadius.circular(20.0),
                     child: Image.network(widget.mainUrl)),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 10,right: 10,top: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10, top: 10),
                 alignment: Alignment.center,
-                child: Text("${widget.title}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                child: Text(
+                  "${widget.title}",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
               ),
               Html(
                 data: widget.htmlData,
@@ -131,7 +156,54 @@ class _DetailBlogState extends State<DetailBlog> {
                 //   });
                 // },
               ),
+              SizedBox(
+                height: 1.5,
+                width: 37,
+                child: Container(
+                  color: colorHexa("d5d5d5"),
+                ),
+              ),
+              writeComment(),
+              SizedBox(
+                height: 1.5,
+                // width: 37,
+                child: Container(
+                  color: colorHexa("e8e8e8"),
+                ),
+              ),
+              LoadComments(id: widget.id),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget writeComment() {
+    return Container(
+      margin: const EdgeInsets.only(left: 28, right: 28, top: 20, bottom: 20),
+      height: 50,
+      child: TextField(
+        cursorColor: colorHexa("7cc618"),
+        maxLines: 1,
+        textAlignVertical: TextAlignVertical.bottom,
+        decoration: InputDecoration(
+          hintText: "Write a comment...",
+          suffixIcon: GestureDetector(
+              onTap: () {
+                print('Click send comment');
+              },
+              child: const Padding(
+                padding: EdgeInsets.all(7.0),
+                child: Image(image: AssetImage("images/send.png")),
+              )),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: colorHexa("7cc618"),
+              ),
+              borderRadius: BorderRadius.circular(17)),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(17),
           ),
         ),
       ),
