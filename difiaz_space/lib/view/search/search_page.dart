@@ -5,6 +5,7 @@ import 'package:difiaz_space/components/slide.dart';
 import 'package:difiaz_space/helpers/colors.dart';
 import 'package:difiaz_space/model/get/get_categories_blog.dart';
 import 'package:difiaz_space/model/model_data_categories_blog.dart';
+import 'package:difiaz_space/presenter/home/search_detail.dart';
 import 'package:flutter/material.dart';
 
 
@@ -107,6 +108,11 @@ class _SearchPageState extends State<SearchPage> {
             borderRadius: BorderRadius.circular(17),
           ),
         ),
+        onSubmitted: (value) {
+          if(value.isNotEmpty){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SearchDetail(search: value,)));
+          }
+        },
       ),
     );
   }
