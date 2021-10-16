@@ -1,4 +1,5 @@
 import 'package:difiaz_space/main_page.dart';
+import 'package:difiaz_space/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         builder: EasyLoading.init(),
-        home: MainPage(),
+        home: WelcomePage(),
       ),
     );
   }

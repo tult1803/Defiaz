@@ -17,11 +17,10 @@ class LoadComments extends StatefulWidget {
 
 class _LoadCommentsState extends State<LoadComments> {
   List<Comments>? dataComment;
-
-  //
   getComments() async {
     GetComments getComments = GetComments();
     dataComment = await getComments.getData("${widget.id}");
+
     return dataComment;
   }
 
@@ -34,9 +33,9 @@ class _LoadCommentsState extends State<LoadComments> {
         if (snapshot.hasData) {
           if (dataComment!.isNotEmpty) {
             return SizedBox(
-              height: 500,
+              height: 400,
               child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
+                // physics: const NeverScrollableScrollPhysics(),
                 itemCount: dataComment!.length,
                 itemBuilder: (context, index) {
                   return containerComments(
@@ -50,7 +49,10 @@ class _LoadCommentsState extends State<LoadComments> {
               ),
             );
           } else {
-            return Container();
+            return Container(
+              height: 150,
+              child: const Center(child: Text("Không có bình luận"),),
+            );
           }
         }
         return const Center(

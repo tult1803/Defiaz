@@ -1,9 +1,6 @@
 import 'package:difiaz_space/components/component.dart';
 import 'package:difiaz_space/helpers/colors.dart';
 import 'package:difiaz_space/helpers/validate_data.dart';
-import 'package:difiaz_space/model/get/get_data_comments.dart';
-import 'package:difiaz_space/model/model_data_comment.dart';
-import 'package:difiaz_space/presenter/home/out_standing.dart';
 import 'package:difiaz_space/presenter/load_comments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -156,19 +153,18 @@ class _DetailBlogState extends State<DetailBlog> {
                 //   });
                 // },
               ),
-              SizedBox(
-                height: 1.5,
-                width: 37,
-                child: Container(
-                  color: colorHexa("d5d5d5"),
-                ),
-              ),
-              writeComment(),
+              // writeComment(),
               SizedBox(
                 height: 1.5,
                 // width: 37,
                 child: Container(
                   color: colorHexa("e8e8e8"),
+                ),
+              ),
+              SizedBox(
+                child: Container(
+                  margin: const EdgeInsets.only(top: 10, bottom: 10),
+                  child: const Text("Bình luận", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                 ),
               ),
               LoadComments(id: widget.id),
