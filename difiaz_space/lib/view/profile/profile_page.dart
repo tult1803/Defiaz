@@ -33,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
     var size = MediaQuery.of(context).size;
     return Column(
       children: [
-        showAvata(size: size, img: "images/logoDe.png", name: "Giang Ly"),
+        showAvata(size: size, img: "images/logoDe.png", name: "Defiaz"),
         Expanded(
           child: SingleChildScrollView(
             child: Column(
