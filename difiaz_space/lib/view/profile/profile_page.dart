@@ -1,9 +1,13 @@
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:difiaz_space/components/component.dart';
+import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
+import 'package:difiaz_space/themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../main.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -15,10 +19,28 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   List<bool> showQty = [false, true];
   bool isDown = true, switchNoti = true, switchComment = false;
+AppTheme? theme;
+  @override
+  void didChangeDependencies() {
+    theme ?? AppTheme.of(context);
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant ProfilePage oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+    super.setState(fn);
   }
 
   void showHide(int i) {
@@ -30,6 +52,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    theme = AppTheme.of(context);
     var size = MediaQuery.of(context).size;
     return Column(
       children: [
@@ -64,7 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       widget: Icon(showQty[index]
                                           ? Icons.keyboard_arrow_down
                                           : Icons.keyboard_arrow_up),
-                                      color: colorHexa("141414"),
+                                      color: colorTitleComponentBottomProfile,
                                       fontWeight: FontWeight.w500,
                                       fontSize: 15),
                                 ),
@@ -104,7 +127,7 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           CircleAvatar(
             child: Image.asset(img),
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.white10,
             maxRadius: 40,
           ),
           const SizedBox(
@@ -114,7 +137,7 @@ class _ProfilePageState extends State<ProfilePage> {
             name,
             style: GoogleFonts.manrope(
                 fontWeight: FontWeight.w500,
-                color: colorHexa("040507"),
+                color: colorTitleShowAvata,
                 fontSize: 18),
             maxLines: 1,
           ),
@@ -130,7 +153,7 @@ class _ProfilePageState extends State<ProfilePage> {
       width: size.width,
       height: 70,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.white10,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(color: colorHexa("f2f2f2"), width: 1.2),
       ),
@@ -171,19 +194,20 @@ class _ProfilePageState extends State<ProfilePage> {
             child: componentBottomProfile(
                 title: "Thông tin cá nhân",
                 widget: Container(),
-                color: colorHexa("141414"))),
+                color: colorComponentBottomProfile)),
         GestureDetector(
             onTap: () {
-              print('Click Theme');
+              theme?.switchTheme();
+              setState(() { });
             },
             child: componentBottomProfile(
                 title: "Theme",
                 widget: CircleAvatar(
-                  backgroundColor: colorHexa("e5e5e5"),
+                  backgroundColor: colorComponentBottomProfile,
                   radius: 10,
                 ),
                 marginTop: 10,
-                color: colorHexa("141414"))),
+                color: colorComponentBottomProfile)),
         componentBottomProfile(
             title: "Báo tin nổi bật",
             widget: Transform.scale(
@@ -198,7 +222,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             marginTop: 10,
-            color: colorHexa("141414")),
+            color: colorComponentBottomProfile),
         componentBottomProfile(
             title: "Bình luận có trả lời mới",
             widget: Transform.scale(
@@ -212,7 +236,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 },
               ),
             ),
-            color: colorHexa("141414")),
+            color: colorComponentBottomProfile),
       ],
     );
   }
@@ -233,7 +257,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Text(
           "ĐĂNG XUẤT",
           style: GoogleFonts.manrope(
-            color: colorHexa("141414"),
+            color: colorComponentBottomProfile,
             fontWeight: FontWeight.w500,
             fontSize: 15,
           ),

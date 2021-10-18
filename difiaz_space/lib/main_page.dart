@@ -4,6 +4,8 @@ import 'package:difiaz_space/view/list_app_bar.dart';
 import 'package:difiaz_space/view/notification_page.dart';
 import 'package:flutter/material.dart';
 
+import 'helpers/color.dart';
+
 
 class MainPage extends StatefulWidget {
   int? index;
@@ -32,7 +34,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: backgroundColorAppBar,
         elevation: 0,
         title: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
           Image.asset(
@@ -53,6 +55,7 @@ class _MainPageState extends State<MainPage> {
                 fit: BoxFit.contain,
                 height: 20,
                 width: 20,
+                color: colorImageBottomNavigationBarItem,
               ),
             ),
           ),
@@ -62,7 +65,7 @@ class _MainPageState extends State<MainPage> {
               onTap: () {
                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>  ListAppBar()));
               },
-              child: const SizedBox(height: 20, width: 20,child: Image(image: AssetImage("images/icon_list.png"))),
+              child: SizedBox(height: 20, width: 20,child: Image(image: AssetImage("images/icon_list.png"), color: colorImageBottomNavigationBarItem,)),
             ),
           ),
         ],
@@ -70,32 +73,32 @@ class _MainPageState extends State<MainPage> {
       body: _widget,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        items: const [
+        items:  [
           BottomNavigationBarItem(
             icon: Padding(
               padding: EdgeInsets.all(5.0),
-              child: Image(image: AssetImage("images/home.png"), height: 25,width: 25,),
+              child: Image(image: AssetImage("images/home.png"), height: 25,width: 25, color: colorImageBottomNavigationBarItem,),
             ),
             label: 'Trang chủ',
           ),
           BottomNavigationBarItem(
             icon: Padding(
               padding: EdgeInsets.only(bottom: 5.0),
-              child: Image(image: AssetImage("images/search.png"), height: 25,width: 25,),
+              child: Image(image: AssetImage("images/search.png"), height: 25,width: 25, color: colorImageBottomNavigationBarItem,),
             ),
             label: 'Tìm kiếm',
           ),
           BottomNavigationBarItem(
             icon: Padding(
               padding: EdgeInsets.only(bottom: 5.0),
-              child: Image(image: AssetImage("images/saved.png"), height: 25,width: 25,),
+              child: Image(image: AssetImage("images/saved.png"), height: 25,width: 25, color: colorImageBottomNavigationBarItem,),
             ),
             label: 'Thích',
           ),
           BottomNavigationBarItem(
             icon: Padding(
               padding: EdgeInsets.all(5.0),
-              child: Image(image: AssetImage("images/user.png"), height: 25,width: 25,),
+              child: Image(image: AssetImage("images/user.png"), height: 25,width: 25, color: colorImageBottomNavigationBarItem,),
             ),
             label: 'Tài khoản',
           ),
@@ -103,7 +106,7 @@ class _MainPageState extends State<MainPage> {
         currentIndex: _selectedIndex,
         showUnselectedLabels: false,
         showSelectedLabels: true,
-        selectedItemColor: Colors.black87,
+        selectedItemColor: selectedItemColor,
         onTap: (value) async{
           _selectedIndex = value;
           _widget = await indexWidgetMainPage(index: _selectedIndex);

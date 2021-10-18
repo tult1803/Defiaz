@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
+import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
 import 'package:difiaz_space/helpers/validate_data.dart';
 import 'package:difiaz_space/presenter/home/show_detail_blog.dart';
@@ -37,7 +38,7 @@ Widget containerTitle(title, {double? widthSizeBox}) {
         Text(
           "$title",
           style: TextStyle(
-              color: colorHexa("141414"),
+              color: colorContainerTitle,
               fontWeight: FontWeight.bold,
               fontSize: 20),
         ),
@@ -48,7 +49,7 @@ Widget containerTitle(title, {double? widthSizeBox}) {
           height: 1.5,
           width: widthSizeBox ?? 120,
           child: Container(
-            color: Colors.black26,
+            color: colorSizeBoxTitle,
           ),
         )
       ],
@@ -63,7 +64,7 @@ Widget containerViewMore(BuildContext context, {Widget? widget}) {
     width: 150,
     height: 40,
     decoration: BoxDecoration(
-      color: colorHexa("7cc618"),
+      color: colorContainerViewMore,
       borderRadius: BorderRadius.circular(100),
     ),
     child: TextButton(
@@ -128,7 +129,7 @@ Widget containerHotNews(
               "$title",
               maxLines: 2,
               style: TextStyle(
-                  color: colorHexa("212121"), fontWeight: FontWeight.w500),
+                  color: colorContainerHotNews, fontWeight: FontWeight.w500),
             ),
           )),
         ],
@@ -180,7 +181,7 @@ Widget containerFavorite(context,
                   "$title",
                   maxLines: 2,
                   style: TextStyle(
-                      color: colorHexa("212121"), fontWeight: FontWeight.bold),
+                      color: colorContainerFavorite, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 10,
@@ -188,8 +189,8 @@ Widget containerFavorite(context,
                 AutoSizeText(
                   "$author",
                   maxLines: 1,
-                  style: const TextStyle(
-                      color: Colors.black54, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      color: colorSizeBoxFavorite, fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -229,7 +230,7 @@ Widget containerPriceCoins({size, urlImg, nameCoin, currentPrice}) {
               ),
               Text(
                 "$nameCoin",
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style:  TextStyle(color: colorContainerPriceCoins,fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -238,6 +239,7 @@ Widget containerPriceCoins({size, urlImg, nameCoin, currentPrice}) {
             child: Center(
               child: Text(
                 "\$${getFormatPrice(currentPrice)}",
+                style: TextStyle(color: colorContainerPriceCoins),
               ),
             ),
           ),

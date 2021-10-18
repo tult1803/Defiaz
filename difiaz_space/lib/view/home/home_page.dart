@@ -1,4 +1,4 @@
-import 'package:difiaz_space/helpers/colors.dart';
+import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/view/home/mini_page/defi_nfts.dart';
 import 'package:difiaz_space/view/home/mini_page/exchange_page.dart';
 import 'package:difiaz_space/view/home/mini_page/favorite_home.dart';
@@ -43,10 +43,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget bottomAppBar() {
     return TabBar(
       // labelPadding: EdgeInsets.symmetric(horizontal: 7.0),
-      indicatorColor: colorHexa("7cc618"),
+      indicatorColor: indicatorColor,
       isScrollable: true,
-      labelColor: colorHexa("141414"),
-      unselectedLabelColor: Colors.black54,
+      labelColor: labelColor,
+      unselectedLabelColor: unselectedLabelColor,
       controller: _tabController,
       tabs: const <Widget>[
         Tab(text: "Trang chủ"),

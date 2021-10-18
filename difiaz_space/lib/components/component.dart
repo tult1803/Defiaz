@@ -1,5 +1,6 @@
 //Đổi màu và icon cho nút back screen
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
+import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -50,7 +51,7 @@ Widget columnShowSaveReadLike({title, value}){
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      AutoSizeText("$value", style: GoogleFonts.poppins(fontWeight: FontWeight.w600),maxLines: 1, overflow: TextOverflow.ellipsis,),
+      AutoSizeText("$value", style: GoogleFonts.poppins(fontWeight: FontWeight.w600, color: colorColumnShowSaveReadLike),maxLines: 1, overflow: TextOverflow.ellipsis,),
       const SizedBox(height: 9,),
       Text("$title",style: GoogleFonts.manrope(color: colorHexa("aaaaaa")),),
     ],

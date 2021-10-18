@@ -23,13 +23,12 @@ class _SearchDetailState extends State<SearchDetail> {
   int _pageSize = 1;
   final PagingController _pagingController = PagingController(firstPageKey: 2);
   late List<CategoriesBlog> data;
-
   Future<void> _fetchPage(pageKey) async {
     try {
       GetCategoriesBlogSearch getCategoriesBlogSearch = GetCategoriesBlogSearch();
       data = await getCategoriesBlogSearch.getData(
           search: widget.search, page: _pageSize, perPage: pageKey);
-      if(data.length == 1)data=[];
+      setState(() {});
       final isLastPage = data.length < pageKey;
       if (isLastPage) {
         _pagingController.appendLastPage(data);
@@ -38,6 +37,7 @@ class _SearchDetailState extends State<SearchDetail> {
           _pageSize += 1;
         });
         final nextPageKey = pageKey;
+        print('nextPageKey: $nextPageKey');
         _pagingController.appendPage(data, nextPageKey);
       }
     } catch (error) {
@@ -107,6 +107,7 @@ class _SearchDetailState extends State<SearchDetail> {
                   ],
                 );
               },
+
               itemBuilder: (context, item, index) {
                 String itemEncode = jsonEncode(item);
                 var itemDecode = itemBlogFromJson(itemEncode);

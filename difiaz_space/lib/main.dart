@@ -1,13 +1,19 @@
-import 'package:difiaz_space/main_page.dart';
+import 'package:difiaz_space/themes.dart';
 import 'package:difiaz_space/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:provider/provider.dart';
 
 import 'helpers/colors.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(
+      ChangeNotifierProvider(
+        create: (_) => AppTheme(),
+        child:  MyApp(),
+      )
+  );
   configLoading();
 }
 
@@ -27,14 +33,20 @@ void configLoading() {
     ..dismissOnTap = false;
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: MaterialApp(
+        theme: AppTheme.of(context,listen: true).currentTheme,
         debugShowCheckedModeBanner: false,
         builder: EasyLoading.init(),
         home: WelcomePage(),
@@ -42,3 +54,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+

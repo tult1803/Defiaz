@@ -2,6 +2,7 @@ import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:difiaz_space/components/container.dart';
 import 'package:difiaz_space/components/slide.dart';
+import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
 import 'package:difiaz_space/model/get/get_categories_blog.dart';
 import 'package:difiaz_space/model/model_data_categories_blog.dart';
@@ -95,9 +96,9 @@ class _SearchPageState extends State<SearchPage> {
         textAlignVertical: TextAlignVertical.bottom,
         decoration: InputDecoration(
           hintText: "Tìm kiếm",
-          prefixIcon: const Icon(
+          prefixIcon: Icon(
             Icons.search,
-            color: Colors.black54,
+            color: colorIconSearch,
           ),
           focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
@@ -132,7 +133,7 @@ class _SearchPageState extends State<SearchPage> {
                       "$title",
                       maxLines: 1,
                       style: TextStyle(
-                        color: colorHexa("575757"),
+                        color: colorTitleContainerSpecialForYou,
                       ),
                     ),
                     const SizedBox(
@@ -142,7 +143,7 @@ class _SearchPageState extends State<SearchPage> {
                       "$content",
                       maxLines: 1,
                       style: TextStyle(
-                          color: colorHexa("141414"),
+                          color: colorContentContainerSpecialForYou,
                           fontWeight: FontWeight.bold,
                           fontSize: 18),
                     ),
@@ -156,10 +157,10 @@ class _SearchPageState extends State<SearchPage> {
                         .push(MaterialPageRoute(builder: (context) => widget));
                   }
                 },
-                child: const SizedBox(
+                child: SizedBox(
                   width: 20,
                   height: 60,
-                  child: Image(image: AssetImage("images/icon_dot.png")),
+                  child: Image(image: const AssetImage("images/icon_dot.png"),color: colorImageContainerSpecialForYou),
                   // child: ,
                 ),
               ),
