@@ -1,4 +1,5 @@
 import 'package:difiaz_space/components/component.dart';
+import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
 import 'package:difiaz_space/helpers/validate_data.dart';
 import 'package:difiaz_space/presenter/load_comments.dart';
@@ -29,7 +30,7 @@ class _DetailBlogState extends State<DetailBlog> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: leadingAppbar(context, colorIcon: Colors.black),
+        leading: leadingAppbar(context, colorIcon: colorLeadingAppbar),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
@@ -47,7 +48,7 @@ class _DetailBlogState extends State<DetailBlog> {
                     ))),
           ),
         ],
-        backgroundColor: Colors.white,
+        backgroundColor: backgroundColorAppBar,
         elevation: 0,
         // title: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         //   Image.asset(

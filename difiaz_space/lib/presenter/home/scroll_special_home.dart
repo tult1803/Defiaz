@@ -101,6 +101,7 @@ class scrollSpecialHomeState extends State<scrollSpecialHome> {
                   var itemDecode = itemBlogFromJson(itemEncode);
                   return slideWeight(
                     context: context,
+                    id: itemDecode.id,
                     contentDetail: itemDecode.content!.rendered,
                     imgUrl: itemDecode.yoastHeadJson!.ogImage!.first.url,
                     title: itemDecode.yoastHeadJson!.title,

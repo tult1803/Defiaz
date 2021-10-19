@@ -120,7 +120,7 @@ Widget containerHotNews(
             imgUrl,
             width: 70,
             height: 70,
-            fit: BoxFit.fill,
+            fit: BoxFit.cover,
           ),
           Expanded(
               child: Container(

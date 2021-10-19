@@ -21,6 +21,7 @@ Color colorColumnShowSaveReadLike = Colors.black87;
 Color colorTitleComponentBottomProfile = colorHexa("141414");
 Color colorComponentBottomProfile = colorHexa("141414");
 Color colorImageBottomNavigationBarItem = Colors.black87;
+Color colorLeadingAppbar = Colors.black;
 // Color backgroundColorBottomNavigation = Colors.white;
 Color backgroundColorAppBar = Colors.white;
 Color colorContainerViewMore = colorHexa("7cc618");

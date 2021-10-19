@@ -18,7 +18,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   List<bool> showQty = [false, true];
-  bool isDown = true, switchNoti = true, switchComment = false;
+  bool isDown = true, switchNoti = true, switchComment = false, switchTheme = false;
 AppTheme? theme;
   @override
   void didChangeDependencies() {
@@ -195,19 +195,22 @@ AppTheme? theme;
                 title: "Thông tin cá nhân",
                 widget: Container(),
                 color: colorComponentBottomProfile)),
-        GestureDetector(
-            onTap: () {
-              theme?.switchTheme();
-              setState(() { });
-            },
-            child: componentBottomProfile(
-                title: "Theme",
-                widget: CircleAvatar(
-                  backgroundColor: colorComponentBottomProfile,
-                  radius: 10,
-                ),
-                marginTop: 10,
-                color: colorComponentBottomProfile)),
+        componentBottomProfile(
+            title: "Theme",
+            widget: Transform.scale(
+              scale: 0.7,
+              child: CupertinoSwitch(
+                value: switchTheme,
+                onChanged: (value) {
+                  setState(() {
+                    switchTheme = value;
+                    theme?.switchTheme();
+                  });
+                },
+              ),
+            ),
+            marginTop: 10,
+            color: colorComponentBottomProfile),
         componentBottomProfile(
             title: "Báo tin nổi bật",
             widget: Transform.scale(

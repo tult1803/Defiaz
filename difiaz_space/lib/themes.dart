@@ -54,10 +54,12 @@ class AppTheme extends ChangeNotifier {
       colorTitleShowAvata = colorHexa("040507");
       colorColumnShowSaveReadLike = Colors.black87;
       backgroundColorAppBar = Colors.white;
+      colorLeadingAppbar = Colors.black;
     } else {
       _themeKey = AppThemeKeys.dark;
       backgroundColorAppBar = colorHexa("303030");
       selectedItemColor = Colors.white;
+      colorLeadingAppbar = Colors.white;
       colorImageBottomNavigationBarItem = Colors.white;
       colorComponentBottomProfile = Colors.white70;
       colorTitleComponentBottomProfile = Colors.white;
