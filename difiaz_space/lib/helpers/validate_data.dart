@@ -34,3 +34,29 @@ getDateTime(String date){
   DateTime dateF = DateTime.parse(date);
   return DateFormat('MM:HH dd/MM').format(dateF);
 }
+
+checkFullName(String name) {
+  if (name == "null" || name == "") {
+    return "Tên đang trống";
+  }
+  return null;
+}
+
+checkEmail(String email) {
+  if (email == "null" || email == "") {
+    return "Email đang trống";
+  }else{
+    bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
+    if(!emailValid){
+      return "Kiểm tra lại email";
+    }
+  }
+  return null;
+}
+
+checkMessage(String message) {
+  if (message == "null" || message == "") {
+    return "Nội dung đang trống";
+  }
+  return null;
+}

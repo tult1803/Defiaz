@@ -3,6 +3,7 @@ import 'package:difiaz_space/components/component.dart';
 import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
 import 'package:difiaz_space/themes.dart';
+import 'package:difiaz_space/view/profile/send_email.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,11 +16,13 @@ class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
+bool switchTheme = false;
 
 class _ProfilePageState extends State<ProfilePage> {
-  List<bool> showQty = [false, true];
-  bool isDown = true, switchNoti = true, switchComment = false, switchTheme = false;
+  List<bool> showQty = [true, true];
+  bool isDown = true, switchNoti = true, switchComment = false;
 AppTheme? theme;
+
   @override
   void didChangeDependencies() {
     theme ?? AppTheme.of(context);
@@ -62,7 +65,8 @@ AppTheme? theme;
             child: Column(
               children: [
                 ListView.builder(
-                    itemCount: 2,
+                  // ItemCount = 2 là có tiện ích vs cài đặt
+                    itemCount: 1,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
@@ -82,8 +86,8 @@ AppTheme? theme;
                                     showHide(index);
                                   },
                                   child: componentBottomProfile(
-                                      title:
-                                          index == 0 ? "TIỆN ÍCH" : "CÀI ĐẶT",
+                                      title:"CÀI ĐẶT",
+                                          // index == 0 ? "TIỆN ÍCH" : "CÀI ĐẶT",
                                       widget: Icon(showQty[index]
                                           ? Icons.keyboard_arrow_down
                                           : Icons.keyboard_arrow_up),
@@ -91,13 +95,12 @@ AppTheme? theme;
                                       fontWeight: FontWeight.w500,
                                       fontSize: 15),
                                 ),
-                                showQty[index]
-                                    ? index == 0
-                                        ? Container(
-                                            color: Colors.white10, height: 100)
-                                        : settingProfile()
-                                    : index == 0
-                                        ? Container()
+                                showQty[index] ?
+                                    // ? index == 0
+                                    //     ? Container():
+                                    settingProfile()
+                                    // : index == 0
+                                    //     ? Container()
                                         : Container()
                               ],
                             ),
@@ -110,7 +113,8 @@ AppTheme? theme;
                         top: 15.5, left: 25, right: 25, bottom: 14),
                     height: 1,
                     color: colorHexa("707070")),
-                btnSignOut(size),
+                btnSendEmail(size),
+                // btnSignOut(size),
               ],
             ),
           ),
@@ -187,14 +191,14 @@ AppTheme? theme;
         const SizedBox(
           height: 10,
         ),
-        GestureDetector(
-            onTap: () {
-              print('Click Thông tin cá nhân');
-            },
-            child: componentBottomProfile(
-                title: "Thông tin cá nhân",
-                widget: Container(),
-                color: colorComponentBottomProfile)),
+        // GestureDetector(
+        //     onTap: () {
+        //       print('Click Thông tin cá nhân');
+        //     },
+        //     child: componentBottomProfile(
+        //         title: "Thông tin cá nhân",
+        //         widget: Container(),
+        //         color: colorComponentBottomProfile)),
         componentBottomProfile(
             title: "Theme",
             widget: Transform.scale(
@@ -211,36 +215,61 @@ AppTheme? theme;
             ),
             marginTop: 10,
             color: colorComponentBottomProfile),
-        componentBottomProfile(
-            title: "Báo tin nổi bật",
-            widget: Transform.scale(
-              scale: 0.7,
-              child: CupertinoSwitch(
-                value: switchNoti,
-                onChanged: (value) {
-                  setState(() {
-                    switchNoti = value;
-                  });
-                },
-              ),
-            ),
-            marginTop: 10,
-            color: colorComponentBottomProfile),
-        componentBottomProfile(
-            title: "Bình luận có trả lời mới",
-            widget: Transform.scale(
-              scale: 0.7,
-              child: CupertinoSwitch(
-                value: switchComment,
-                onChanged: (value1) {
-                  setState(() {
-                    switchComment = value1;
-                  });
-                },
-              ),
-            ),
-            color: colorComponentBottomProfile),
+        // componentBottomProfile(
+        //     title: "Báo tin nổi bật",
+        //     widget: Transform.scale(
+        //       scale: 0.7,
+        //       child: CupertinoSwitch(
+        //         value: switchNoti,
+        //         onChanged: (value) {
+        //           setState(() {
+        //             switchNoti = value;
+        //           });
+        //         },
+        //       ),
+        //     ),
+        //     marginTop: 10,
+        //     color: colorComponentBottomProfile),
+        // componentBottomProfile(
+        //     title: "Bình luận có trả lời mới",
+        //     widget: Transform.scale(
+        //       scale: 0.7,
+        //       child: CupertinoSwitch(
+        //         value: switchComment,
+        //         onChanged: (value1) {
+        //           setState(() {
+        //             switchComment = value1;
+        //           });
+        //         },
+        //       ),
+        //     ),
+        //     color: colorComponentBottomProfile),
       ],
+    );
+  }
+
+  Widget btnSendEmail(size) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => SendEmail()));
+      },
+      child: Container(
+        alignment: Alignment.centerLeft,
+        margin: const EdgeInsets.only(
+            left: 38,
+            right: 38,
+            bottom: 10
+        ),
+        width: size.width,
+        child: Text(
+          "EMAIL GÓP Ý, BÁO LỖI",
+          style: GoogleFonts.manrope(
+            color: colorComponentBottomProfile,
+            fontWeight: FontWeight.w500,
+            fontSize: 15,
+          ),
+        ),
+      ),
     );
   }
 
