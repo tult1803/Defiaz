@@ -1,7 +1,7 @@
 import 'package:difiaz_space/components/component.dart';
 import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
-import 'package:difiaz_space/helpers/loading_animation.dart';
+import 'package:difiaz_space/helpers/loading.dart';
 import 'package:difiaz_space/helpers/validate_data.dart';
 import 'package:difiaz_space/presenter/send_report.dart';
 import 'package:flutter/material.dart';

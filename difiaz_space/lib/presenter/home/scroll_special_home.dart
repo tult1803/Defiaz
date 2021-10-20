@@ -69,13 +69,13 @@ class scrollSpecialHomeState extends State<scrollSpecialHome> {
               builderDelegate: PagedChildBuilderDelegate(
                 noMoreItemsIndicatorBuilder: (context) =>
                     firstPageErrorIndicatorBuilder(context,
-                        tittle: "Không có dữ liệu"),
+                        tittle: ""),
                 noItemsFoundIndicatorBuilder: (context) =>
                     firstPageErrorIndicatorBuilder(context,
-                        tittle: "Không có dữ liệu"),
+                        tittle: "Không tìm thấy bài viết liên quan"),
                 newPageErrorIndicatorBuilder: (context) =>
                     firstPageErrorIndicatorBuilder(context,
-                        tittle: "Không có dữ liệu"),
+                        tittle: ""),
                 firstPageProgressIndicatorBuilder: (context) =>
                     firstPageProgressIndicatorBuilder(),
                 newPageProgressIndicatorBuilder: (context) =>

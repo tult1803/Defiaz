@@ -46,7 +46,7 @@ Widget firstPageErrorIndicatorBuilder(BuildContext context, {String? tittle}) {
     child: Center(
         child: AutoSizeText(
           "$tittle",
-          style: const TextStyle(color: Colors.black54, fontSize: 16),
+          style: TextStyle(color: colorIconSearch, fontSize: 16),
         )),
   );
 }

@@ -7,6 +7,7 @@ import 'package:difiaz_space/view/profile/send_email.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../main.dart';
 
@@ -16,7 +17,6 @@ class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
-bool switchTheme = false;
 
 class _ProfilePageState extends State<ProfilePage> {
   List<bool> showQty = [true, true];
@@ -205,10 +205,15 @@ AppTheme? theme;
               scale: 0.7,
               child: CupertinoSwitch(
                 value: switchTheme,
-                onChanged: (value) {
+                onChanged: (value) async{
+                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                  isLightMode = !value;
+                      prefs.setBool("light", !value);
+                  print('Set isLightMode: $isLightMode');
+                  await theme?.switchTheme();
                   setState(() {
                     switchTheme = value;
-                    theme?.switchTheme();
+                    // theme?.switchTheme();
                   });
                 },
               ),

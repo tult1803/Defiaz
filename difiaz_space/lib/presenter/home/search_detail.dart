@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:difiaz_space/components/component.dart';
 import 'package:difiaz_space/components/slide.dart';
+import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
 import 'package:difiaz_space/model/get/get_categories_blog.dart';
 import 'package:difiaz_space/model/model_data_categories_blog.dart';
@@ -58,10 +59,10 @@ class _SearchDetailState extends State<SearchDetail> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          leading: leadingAppbar(context, colorIcon: Colors.black),
+          leading: leadingAppbar(context, colorIcon: colorLeadingAppbar),
           centerTitle: true,
-          title: const Text("Tìm kiếm"),
-          backgroundColor: Colors.white,
+          title:  Text("Tìm kiếm"),
+          backgroundColor: backgroundColorAppBar,
           elevation: 0,
         ),
         body: Container(
@@ -80,13 +81,13 @@ class _SearchDetailState extends State<SearchDetail> {
             builderDelegate: PagedChildBuilderDelegate(
               noMoreItemsIndicatorBuilder: (context) =>
                   firstPageErrorIndicatorBuilder(context,
-                      tittle: "Không có dữ liệu"),
+                      tittle: ""),
               noItemsFoundIndicatorBuilder: (context) =>
                   firstPageErrorIndicatorBuilder(context,
-                      tittle: "Không có dữ liệu"),
+                      tittle: "Không tìm thấy bài viết liên quan"),
               newPageErrorIndicatorBuilder: (context) =>
                   firstPageErrorIndicatorBuilder(context,
-                      tittle: "Không có dữ liệu"),
+                      tittle: ""),
               firstPageProgressIndicatorBuilder: (context) =>
                   firstPageProgressIndicatorBuilder(),
               newPageProgressIndicatorBuilder: (context) =>

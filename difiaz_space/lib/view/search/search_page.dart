@@ -66,20 +66,20 @@ class _SearchPageState extends State<SearchPage> {
           containerTitle("Nổi Bật Cho Bạn", widthSizeBox: 0),
           containerSpecialForYou(
               context: context,
-              title: "Covid-19 - Trending",
-              content: "Covid-19"),
+              title: "DEFI & NFTS - Trending",
+              content: "Whale"),
           containerSpecialForYou(
               context: context,
-              title: "Politics - Trending",
-              content: "America"),
+              title: "KIẾN THỨC - Trending",
+              content: "Blockchain"),
           containerSpecialForYou(
               context: context,
-              title: "Movies & TV - Trending",
-              content: "Reply 1998"),
+              title: "TIN TỨC - Trending",
+              content: "Tiền điện tử"),
           containerSpecialForYou(
               context: context,
-              title: "Sports - Trending",
-              content: "Valentino Rossi "),
+              title: "SÀN GIAO DỊCH - Trending",
+              content: "Liquidity Pools"),
         ],
       ),
     );
@@ -118,63 +118,69 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget containerSpecialForYou({context, Widget? widget, title, content}) {
-    return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AutoSizeText(
-                      "$title",
-                      maxLines: 1,
-                      style: TextStyle(
-                        color: colorTitleContainerSpecialForYou,
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SearchDetail(search: content,)));
+      },
+      child: Container(
+        color: backgroundColorAppBar,
+        margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AutoSizeText(
+                        "$title",
+                        maxLines: 1,
+                        style: TextStyle(
+                          color: colorTitleContainerSpecialForYou,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    AutoSizeText(
-                      "$content",
-                      maxLines: 1,
-                      style: TextStyle(
-                          color: colorContentContainerSpecialForYou,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      AutoSizeText(
+                        "$content",
+                        maxLines: 1,
+                        style: TextStyle(
+                            color: colorContentContainerSpecialForYou,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  if (widget != null) {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) => widget));
-                  }
-                },
-                child: SizedBox(
-                  width: 20,
-                  height: 60,
-                  child: Image(image: const AssetImage("images/icon_dot.png"),color: colorImageContainerSpecialForYou),
-                  // child: ,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 1.5,
-            child: Container(
-              color: Colors.black26,
+                // GestureDetector(
+                //   onTap: () {
+                //     if (widget != null) {
+                //       Navigator.of(context)
+                //           .push(MaterialPageRoute(builder: (context) => widget));
+                //     }
+                //   },
+                //   child: SizedBox(
+                //     width: 20,
+                //     height: 60,
+                //     child: Image(image: const AssetImage("images/icon_dot.png"),color: colorImageContainerSpecialForYou),
+                //     // child: ,
+                //   ),
+                // ),
+              ],
             ),
-          )
-        ],
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 1.5,
+              child: Container(
+                color: Colors.black26,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

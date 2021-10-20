@@ -3,6 +3,7 @@ import 'package:difiaz_space/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'helpers/colors.dart';
 
@@ -39,8 +40,29 @@ class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
 }
+
+bool? isLightMode;
+bool switchTheme = false;
 class _MyAppState extends State<MyApp> {
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getTheme();
+  }
+
+  getTheme() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    isLightMode = prefs.getBool("light");
+    setState(() {});
+    if(isLightMode == false){
+      switchTheme = true;
+      await AppTheme.of(context).switchTheme();
+    }
+    print("isLightMode: $isLightMode");
+    setState(() {});
+  }
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

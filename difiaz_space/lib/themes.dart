@@ -22,7 +22,6 @@ class AppTheme extends ChangeNotifier {
       Provider.of<AppTheme>(context, listen: listen);
 
   AppThemeKeys _themeKey = AppThemeKeys.light;
-
   ThemeData? get currentTheme => _themes[_themeKey];
   AppThemeKeys get currentThemeKey => _themeKey;
 
@@ -34,7 +33,7 @@ class AppTheme extends ChangeNotifier {
   switchTheme() async{
     if (_themeKey == AppThemeKeys.dark) {
       _themeKey = AppThemeKeys.light;
-       unselectedLabelColor = Colors.black54;
+      unselectedLabelColor =Colors.black54;
        labelColor = colorHexa("141414");
        indicatorColor = colorHexa("7cc618");
        colorContainerTitle = colorHexa("141414");

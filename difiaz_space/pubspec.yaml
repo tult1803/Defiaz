@@ -41,6 +41,7 @@ dependencies:
   infinite_scroll_pagination: ^3.1.0
   shimmer: ^2.0.0
   flutter_share: ^2.0.0
+  shared_preferences: ^2.0.8
   provider: ^6.0.1
   #  social_share: ^2.1.1
   # The following adds the Cupertino Icons font to your application.
