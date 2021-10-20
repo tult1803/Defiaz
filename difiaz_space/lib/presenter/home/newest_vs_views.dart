@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:difiaz_space/components/container.dart';
 import 'package:difiaz_space/components/slide.dart';
+import 'package:difiaz_space/helpers/data.dart';
 import 'package:difiaz_space/main_page.dart';
 import 'package:difiaz_space/model/get/get_categories_blog.dart';
 import 'package:difiaz_space/model/model_data_categories_blog.dart';
@@ -17,13 +18,25 @@ class NewestVsViews extends StatefulWidget {
 }
 
 class _CarouselSliderState extends State<NewestVsViews> {
-  List<CategoriesBlog>? data;
-
+  List<CategoriesBlog>? dataNewestVsViews;
   getData() async {
     GetCategoriesBlog categoriesBlog = GetCategoriesBlog();
-    data = await categoriesBlog.getData(
-        categories: "${widget.categories}", page: "1", perPage: "8");
-    return data;
+    if(widget.categories == 70) {
+      if (dataNewestVsViews70 == null) {
+        dataNewestVsViews70 = await categoriesBlog.getData(
+            categories: "${widget.categories}", page: "1", perPage: "8");
+      }
+      dataNewestVsViews = dataNewestVsViews70;
+      setState(() {});
+    }else {
+      if (dataNewestVsViews73 == null) {
+        dataNewestVsViews73 = await categoriesBlog.getData(
+            categories: "${widget.categories}", page: "1", perPage: "8");
+      }
+      dataNewestVsViews = dataNewestVsViews73;
+      setState(() {});
+    }
+    return dataNewestVsViews;
   }
 
   @override
@@ -40,12 +53,12 @@ class _CarouselSliderState extends State<NewestVsViews> {
                 itemBuilder: (context, index, realIndex) {
                   return slideWeight(
                       context: context,
-                      id: data![index].id,
-                      contentDetail: data![index].content!.rendered,
-                      imgUrl: data![index].yoastHeadJson!.ogImage!.first.url,
-                      title: data![index].yoastHeadJson!.title,
-                      redirectUrl: data![index].guid!.rendered,
-                      content: data![index].yoastHeadJson!.description);
+                      id: dataNewestVsViews![index].id,
+                      contentDetail: dataNewestVsViews![index].content!.rendered,
+                      imgUrl: dataNewestVsViews![index].yoastHeadJson!.ogImage!.first.url,
+                      title: dataNewestVsViews![index].yoastHeadJson!.title,
+                      redirectUrl: dataNewestVsViews![index].guid!.rendered,
+                      content: dataNewestVsViews![index].yoastHeadJson!.description);
                 },
                 options: CarouselOptions(
                   autoPlay: false,
@@ -60,12 +73,12 @@ class _CarouselSliderState extends State<NewestVsViews> {
                 itemBuilder: (context, index, realIndex) {
                   return slideWeight(
                       context: context,
-                      id: data![index + 4].id,
-                      contentDetail: data![index + 4].content!.rendered,
-                      imgUrl: data![index + 4].yoastHeadJson!.ogImage!.first.url,
-                      title: data![index + 4].yoastHeadJson!.title,
-                      redirectUrl: data![index + 4].guid!.rendered,
-                      content: data![index + 4].yoastHeadJson!.description);
+                      id: dataNewestVsViews![index + 4].id,
+                      contentDetail: dataNewestVsViews![index + 4].content!.rendered,
+                      imgUrl: dataNewestVsViews![index + 4].yoastHeadJson!.ogImage!.first.url,
+                      title: dataNewestVsViews![index + 4].yoastHeadJson!.title,
+                      redirectUrl: dataNewestVsViews![index + 4].guid!.rendered,
+                      content: dataNewestVsViews![index + 4].yoastHeadJson!.description);
                 },
                 options: CarouselOptions(
                   autoPlay: false,

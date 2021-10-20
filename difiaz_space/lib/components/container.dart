@@ -181,7 +181,8 @@ Widget containerFavorite(context,
                   "$title",
                   maxLines: 2,
                   style: TextStyle(
-                      color: colorContainerFavorite, fontWeight: FontWeight.bold),
+                      color: colorContainerFavorite,
+                      fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 10,
@@ -230,7 +231,9 @@ Widget containerPriceCoins({size, urlImg, nameCoin, currentPrice}) {
               ),
               Text(
                 "$nameCoin",
-                style:  TextStyle(color: colorContainerPriceCoins,fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: colorContainerPriceCoins,
+                    fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -253,37 +256,12 @@ Widget containerPriceCoins({size, urlImg, nameCoin, currentPrice}) {
 Widget loadingContainer(size) {
   return Shimmer.fromColors(
     direction: ShimmerDirection.ltr,
-    baseColor: colorHexa("aff022"),
-    highlightColor: colorHexa("7cc618"),
+    baseColor: colorHexa("C4C4C4"),
+    highlightColor: colorHexa("FFFFFF"),
     enabled: true,
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Stack(
-        children: [
-          Container(
-            height: 210,
-            width: size.width,
-            decoration: BoxDecoration(
-              color: Colors.white24,
-              borderRadius: BorderRadius.circular(20),
-            ),
-          ),
-          // Positioned(
-          //     bottom: 0,
-          //     right: 0,
-          //     left: 0,
-          //     child: Container(
-          //       height: 100,
-          //       width: size.width,
-          //       decoration:  const BoxDecoration(
-          //         color: Colors.white24,
-          //         borderRadius: BorderRadius.only(
-          //             bottomLeft: Radius.circular(20),
-          //             bottomRight: Radius.circular(20)),
-          //       ),
-          //     )),
-        ],
-      ),
+    child: const Padding(
+      padding: EdgeInsets.all(10.0),
+      child: Image(image: AssetImage("images/loading_defiaz.png")),
     ),
   );
 }
@@ -292,8 +270,8 @@ Widget loadingContainer(size) {
 Widget loadingContainerHotNews(size) {
   return Shimmer.fromColors(
     direction: ShimmerDirection.ltr,
-    baseColor: colorHexa("aff022"),
-    highlightColor: colorHexa("7cc618"),
+    baseColor: colorHexa("C4C4C4"),
+    highlightColor: colorHexa("FFFFFF"),
     enabled: true,
     child: Padding(
       padding: const EdgeInsets.all(8.0),

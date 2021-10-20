@@ -19,10 +19,13 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.white,
+        decoration: const BoxDecoration(
+          image: DecorationImage(image: AssetImage("images/background.jpg"), fit: BoxFit.cover),
+        ),
         child: const Center(
             child: Image(
-          image: AssetImage("images/logo_defiaz.png"),
+          image: AssetImage("images/logo_defiaz1.png"),
+          // color: Colors.white,
           height: 200,
           width: 200,
         )));

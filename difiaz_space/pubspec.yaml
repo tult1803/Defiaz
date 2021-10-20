@@ -82,12 +82,15 @@ flutter:
     - images/send.png
     - images/icon_list.png
     - images/icon_dot.png
+    - images/logo_defiaz1.png
     - images/media01.png
     - images/media02.png
     - images/media03.png
     - images/media04.png
     - images/media05.png
     - images/media06.png
+    - images/loading_defiaz.png
+    - images/background.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

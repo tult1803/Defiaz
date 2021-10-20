@@ -4,8 +4,8 @@ import 'package:difiaz_space/components/container.dart';
 import 'package:difiaz_space/components/slide.dart';
 import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
+import 'package:difiaz_space/helpers/data.dart';
 import 'package:difiaz_space/model/get/get_categories_blog.dart';
-import 'package:difiaz_space/model/model_data_categories_blog.dart';
 import 'package:difiaz_space/presenter/home/search_detail.dart';
 import 'package:flutter/material.dart';
 
@@ -18,12 +18,11 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   int currentPos = 0;
-  List<CategoriesBlog>? data;
 
   getData() async{
     GetCategoriesBlog categoriesBlog = GetCategoriesBlog();
-    data = await categoriesBlog.getData(categories: "74", page: "1", perPage: "5");
-    return data;
+    if(dataSearchPage == null){dataSearchPage = await categoriesBlog.getData(categories: "74", page: "1", perPage: "5");}
+    return dataSearchPage;
   }
   @override
   Widget build(BuildContext context) {
@@ -36,14 +35,14 @@ class _SearchPageState extends State<SearchPage> {
             builder: (context, snapshot) {
               if(snapshot.hasData){
                 return CarouselSlider.builder(
-                  itemCount: data!.length,
+                  itemCount: dataSearchPage!.length,
                   itemBuilder: (context, index, realIndex) {
                     return slideSearchPage(context: context,
-                        id: data![index].id,
-                      imgUrl: data![index].yoastHeadJson!.ogImage!.first.url,
-                      title: data![index].title!.rendered,
-                    redirectUrl: data![index].guid!.rendered,
-                    contentDetail: data![index].content!.rendered);
+                        id: dataSearchPage![index].id,
+                      imgUrl: dataSearchPage![index].yoastHeadJson!.ogImage!.first.url,
+                      title: dataSearchPage![index].title!.rendered,
+                    redirectUrl: dataSearchPage![index].guid!.rendered,
+                    contentDetail: dataSearchPage![index].content!.rendered);
                   },
                   options: CarouselOptions(
                     onPageChanged: (index, reason) {

@@ -1,6 +1,6 @@
 import 'package:difiaz_space/components/container.dart';
+import 'package:difiaz_space/helpers/data.dart';
 import 'package:difiaz_space/model/get/get_categories_blog.dart';
-import 'package:difiaz_space/model/model_data_categories_blog.dart';
 import 'package:flutter/material.dart';
 
 class HotNews extends StatefulWidget {
@@ -13,13 +13,14 @@ class HotNews extends StatefulWidget {
 }
 
 class _HotNewsState extends State<HotNews> {
-  List<CategoriesBlog>? data;
 
   getData() async {
     GetCategoriesBlog categoriesBlog = GetCategoriesBlog();
-    data = await categoriesBlog.getData(
-        categories: "${widget.categories}", page: "1", perPage: "4");
-    return data;
+    if(dataHotNews == null) {
+      dataHotNews = await categoriesBlog.getData(
+          categories: "${widget.categories}", page: "1", perPage: "4");
+    }
+    return dataHotNews;
   }
 
   @override
@@ -37,38 +38,38 @@ class _HotNewsState extends State<HotNews> {
                 containerHotNews(
                   context,
                   size: size,
-                  id: data![0].id,
-                  imgUrl: data![0].yoastHeadJson!.ogImage!.first.url,
-                  title: data![0].title?.rendered,
-                  content: data![0].content!.rendered,
-                  redirectUrl: data![0].guid!.rendered,
+                  id: dataHotNews![0].id,
+                  imgUrl: dataHotNews![0].yoastHeadJson!.ogImage!.first.url,
+                  title: dataHotNews![0].title?.rendered,
+                  content: dataHotNews![0].content!.rendered,
+                  redirectUrl: dataHotNews![0].guid!.rendered,
                 ),
                 containerHotNews(
                   context,
                   size: size,
-                  id: data![1].id,
-                  imgUrl: data![1].yoastHeadJson!.ogImage!.first.url,
-                  title: data![1].title?.rendered,
-                  content: data![1].content!.rendered,
-                  redirectUrl: data![1].guid!.rendered,
+                  id: dataHotNews![1].id,
+                  imgUrl: dataHotNews![1].yoastHeadJson!.ogImage!.first.url,
+                  title: dataHotNews![1].title?.rendered,
+                  content: dataHotNews![1].content!.rendered,
+                  redirectUrl: dataHotNews![1].guid!.rendered,
                 ),
                 containerHotNews(
                   context,
                   size: size,
-                  id: data![2].id,
-                  imgUrl: data![2].yoastHeadJson!.ogImage!.first.url,
-                  title: data![2].title?.rendered,
-                  content: data![2].content!.rendered,
-                  redirectUrl: data![2].guid!.rendered,
+                  id: dataHotNews![2].id,
+                  imgUrl: dataHotNews![2].yoastHeadJson!.ogImage!.first.url,
+                  title: dataHotNews![2].title?.rendered,
+                  content: dataHotNews![2].content!.rendered,
+                  redirectUrl: dataHotNews![2].guid!.rendered,
                 ),
                 containerHotNews(
                   context,
                   size: size,
-                  id: data![3].id,
-                  imgUrl: data![3].yoastHeadJson!.ogImage!.first.url,
-                  title: data![3].title?.rendered,
-                  content: data![3].content!.rendered,
-                  redirectUrl: data![3].guid!.rendered,
+                  id: dataHotNews![3].id,
+                  imgUrl: dataHotNews![3].yoastHeadJson!.ogImage!.first.url,
+                  title: dataHotNews![3].title?.rendered,
+                  content: dataHotNews![3].content!.rendered,
+                  redirectUrl: dataHotNews![3].guid!.rendered,
                 ),
               ],
             ),
