@@ -25,7 +25,7 @@ class _NotiAppBarState extends State<NotiAppBar> {
           style: GoogleFonts.manrope(
               fontWeight: FontWeight.w800,
               fontSize: 15,
-              color: colorHexa("141414")),
+              color: colorLeadingAppbar),
         ),
       ),
     );
