@@ -1,5 +1,7 @@
 //Đổi màu và icon cho nút back screen
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
+import 'package:difiaz_space/components/load/loading_animation.dart';
+import 'package:difiaz_space/components/load/loading_animation_1.dart';
 import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +19,13 @@ Widget leadingAppbar(BuildContext context, {Widget? widget, Color? colorIcon}) {
 }
 Widget newPageProgressIndicatorBuilder() {
   return Center(
-    child: CircularProgressIndicator(
-      color: colorHexa("aff022"),
+    child: ColorLoader5(
+      dotOneColor: colorLoadingAnimation,
+      dotTwoColor: colorLoadingAnimation,
+      dotThreeColor: colorLoadingAnimation,
+      dotType: DotType.circle,
+      dotIcon: const Icon(Icons.adjust),
+      duration: const Duration(seconds: 1),
     ),
   );
 }
@@ -26,9 +33,7 @@ Widget newPageProgressIndicatorBuilder() {
 // Dùng cho PagedChildBuilderDelegate trong PagedSliverList
 Widget firstPageProgressIndicatorBuilder() {
   return Center(
-    child: CircularProgressIndicator(
-      color: colorHexa("aff022"),
-    ),
+    child: ColorLoader(dotRadius: 6,radius: 20,),
   );
 }
 

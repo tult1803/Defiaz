@@ -21,7 +21,7 @@ class SearchDetail extends StatefulWidget {
 
 class _SearchDetailState extends State<SearchDetail> {
   int _pageSize = 1;
-  final PagingController _pagingController = PagingController(firstPageKey: 2);
+  final PagingController _pagingController = PagingController(firstPageKey: 5);
   late List<CategoriesBlog> data;
   Future<void> _fetchPage(pageKey) async {
     try {

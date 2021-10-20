@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
+Color colorLoadingAnimation = colorHexa("aff022");
 
 Color unselectedLabelColor = Colors.black54;
 Color labelColor = colorHexa("141414");
