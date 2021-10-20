@@ -55,9 +55,11 @@ class AppTheme extends ChangeNotifier {
       colorColumnShowSaveReadLike = Colors.black87;
       backgroundColorAppBar = Colors.white;
       colorLeadingAppbar = Colors.black;
+      colorContainerPopualarMedia = Colors.white;
     } else {
       _themeKey = AppThemeKeys.dark;
       backgroundColorAppBar = colorHexa("303030");
+      colorContainerPopualarMedia = Colors.white24;
       selectedItemColor = Colors.white;
       colorLeadingAppbar = Colors.white;
       colorImageBottomNavigationBarItem = Colors.white;

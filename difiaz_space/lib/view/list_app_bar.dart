@@ -1,6 +1,7 @@
 import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:difiaz_space/components/component.dart';
 import 'package:difiaz_space/components/container.dart';
+import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,16 +20,16 @@ class _ListAppBarState extends State<ListAppBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: leadingAppbar(context, colorIcon: colorHexa("141414")),
+        leading: leadingAppbar(context, colorIcon: colorLeadingAppbar),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: backgroundColorAppBar,
         elevation: 0,
         title: Text(
           "Danh mục",
           style: GoogleFonts.manrope(
               fontWeight: FontWeight.w800,
               fontSize: 15,
-              color: colorHexa("141414")),
+              color: colorLeadingAppbar),
         ),
       ),
       body: Column(
@@ -92,7 +93,7 @@ class _ListAppBarState extends State<ListAppBar> {
       height: 130,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: Colors.white,
+          color: colorContainerPopualarMedia,
           // border: Border.all(color: Colors.black12)
         boxShadow: const [
           BoxShadow(
@@ -118,7 +119,7 @@ class _ListAppBarState extends State<ListAppBar> {
               textAlign: TextAlign.center,
               maxLines: 2,
               style: GoogleFonts.manrope(
-                  color: colorHexa("141414"),
+                  color: colorLeadingAppbar,
                   fontSize: 12,
                   fontWeight: FontWeight.w500),
             ),

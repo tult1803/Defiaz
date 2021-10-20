@@ -1,4 +1,5 @@
 import 'package:difiaz_space/components/component.dart';
+import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,9 +16,9 @@ class _NotiAppBarState extends State<NotiAppBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: leadingAppbar(context, colorIcon: colorHexa("141414")),
+        leading: leadingAppbar(context, colorIcon: colorLeadingAppbar),
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: backgroundColorAppBar,
         elevation: 0,
         title: Text(
           "Thông báo",
