@@ -34,27 +34,31 @@ class _SearchPageState extends State<SearchPage> {
             future: getData(),
             builder: (context, snapshot) {
               if(snapshot.hasData){
-                return CarouselSlider.builder(
-                  itemCount: dataSearchPage!.length,
-                  itemBuilder: (context, index, realIndex) {
-                    return slideSearchPage(context: context,
-                        id: dataSearchPage![index].id,
-                      imgUrl: dataSearchPage![index].yoastHeadJson!.ogImage!.first.url,
-                      title: dataSearchPage![index].title!.rendered,
-                    redirectUrl: dataSearchPage![index].guid!.rendered,
-                    contentDetail: dataSearchPage![index].content!.rendered);
-                  },
-                  options: CarouselOptions(
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        currentPos = index;
-                      });
+                return SizedBox(
+                  height: 200,
+                  width: double.infinity,
+                  child: CarouselSlider.builder(
+                    itemCount: dataSearchPage!.length,
+                    itemBuilder: (context, index, realIndex) {
+                      return slideSearchPage(context: context,
+                          id: dataSearchPage![index].id,
+                        imgUrl: dataSearchPage![index].yoastHeadJson!.ogImage!.first.url,
+                        title: dataSearchPage![index].title!.rendered,
+                      redirectUrl: dataSearchPage![index].guid!.rendered,
+                      contentDetail: dataSearchPage![index].content!.rendered);
                     },
-                    autoPlay: true,
-                    autoPlayAnimationDuration: const Duration(seconds: 3),
-                    viewportFraction: 0.7,
-                    aspectRatio: 2.4,
-                    initialPage: 0,
+                    options: CarouselOptions(
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          currentPos = index;
+                        });
+                      },
+                      autoPlay: true,
+                      autoPlayAnimationDuration: const Duration(seconds: 3),
+                      viewportFraction: 0.7,
+                      aspectRatio: 2.35,
+                      initialPage: 0,
+                    ),
                   ),
                 );
               }
@@ -87,7 +91,7 @@ class _SearchPageState extends State<SearchPage> {
 
   Widget searchField() {
     return Container(
-      margin: const EdgeInsets.only(left: 40, right: 40, top: 20, bottom: 20),
+      margin: const EdgeInsets.only(left: 40, right: 40, top: 20, bottom: 0),
       height: 35,
       child: TextField(
         cursorColor: colorHexa("7cc618"),

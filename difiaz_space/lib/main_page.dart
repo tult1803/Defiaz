@@ -45,13 +45,13 @@ class _MainPageState extends State<MainPage> {
         ]),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.only(right: 20),
             child: GestureDetector(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const NotiAppBar()));
               },
-              child: const Icon(DefiaazIcon.noti, size: 25,),
+              child: const Icon(DefiaazIcon.noti, size: 20,),
               // child: Image.asset(
               //   'images/noti.png',
               //   fit: BoxFit.contain,
@@ -78,19 +78,31 @@ class _MainPageState extends State<MainPage> {
         type: BottomNavigationBarType.fixed,
         items: const [
             BottomNavigationBarItem(
-              icon: Icon(DefiaazIcon.home, size: 25,),
+              icon: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Icon(DefiaazIcon.home, size: 25,),
+              ),
             label: 'Trang chủ',
           ),
           BottomNavigationBarItem(
-            icon: Icon(DefiaazIcon.search, size: 25,),
+            icon: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(DefiaazIcon.search, size: 25,),
+            ),
             label: 'Tìm kiếm',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border_rounded, size: 25,),
+            icon: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(Icons.favorite_border_rounded, size: 25,),
+            ),
             label: 'Thích',
           ),
           BottomNavigationBarItem(
-            icon: Icon(DefiaazIcon.profile, size: 25,),
+            icon: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(DefiaazIcon.profile, size: 25,),
+            ),
             label: 'Tài khoản',
           ),
         ],
