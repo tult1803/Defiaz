@@ -10,17 +10,22 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   int? index;
-
   HomePage({this.index});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late TabController _tabController;
   late int _index;
 
+
+  @override
+  void setState(VoidCallback fn) {
+    // TODO: implement setState
+    super.setState(fn);
+  }
   @override
   void initState() {
     // TODO: implement initState

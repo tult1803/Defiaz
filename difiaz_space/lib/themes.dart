@@ -8,12 +8,28 @@ enum AppThemeKeys { light, dark }
 
 final Map<AppThemeKeys, ThemeData> _themes = {
   AppThemeKeys.light: ThemeData(
-    primaryColor: Colors.white,
+    // primaryColor: Colors.white,
     brightness: Brightness.light,
+    appBarTheme: const AppBarTheme(
+        color: Colors.white,
+        actionsIconTheme: IconThemeData(color: Colors.black54)),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedItemColor: Colors.black54,
+      backgroundColor: Colors.white,
+      selectedIconTheme: IconThemeData(color: Colors.black54),
+    ),
+    // canvasColor
   ),
-  AppThemeKeys.dark:  ThemeData(
+  AppThemeKeys.dark: ThemeData(
     brightness: Brightness.dark,
-
+    appBarTheme: AppBarTheme(
+        color: colorHexa("303030"),
+        actionsIconTheme: const IconThemeData(color: Colors.white)),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedItemColor: Colors.white,
+      backgroundColor: colorHexa("303030"),
+      selectedIconTheme: const IconThemeData(color: Colors.white),
+    ),
   ),
 };
 
@@ -22,7 +38,9 @@ class AppTheme extends ChangeNotifier {
       Provider.of<AppTheme>(context, listen: listen);
 
   AppThemeKeys _themeKey = AppThemeKeys.light;
+
   ThemeData? get currentTheme => _themes[_themeKey];
+
   AppThemeKeys get currentThemeKey => _themeKey;
 
   setTheme(AppThemeKeys themeKey) {
@@ -30,16 +48,16 @@ class AppTheme extends ChangeNotifier {
     notifyListeners();
   }
 
-  switchTheme() async{
+  switchTheme() async {
     if (_themeKey == AppThemeKeys.dark) {
       _themeKey = AppThemeKeys.light;
-      unselectedLabelColor =Colors.black54;
-       labelColor = colorHexa("141414");
-       indicatorColor = colorHexa("7cc618");
-       colorContainerTitle = colorHexa("141414");
-       colorSizeBoxTitle = Colors.black26;
-       colorContainerPriceCoins = Colors.black87;
-       selectedItemColor = Colors.black87;
+      unselectedLabelColor = Colors.black54;
+      labelColor = colorHexa("141414");
+      indicatorColor = colorHexa("7cc618");
+      colorContainerTitle = colorHexa("141414");
+      colorSizeBoxTitle = Colors.black26;
+      colorContainerPriceCoins = Colors.black87;
+      // selectedItemColor = Colors.black87;
       colorContainerHotNews = colorHexa("212121");
       colorIconSearch = Colors.black54;
       colorTitleContainerSpecialForYou = colorHexa("575757");
@@ -52,14 +70,12 @@ class AppTheme extends ChangeNotifier {
       colorImageBottomNavigationBarItem = Colors.black87;
       colorTitleShowAvata = colorHexa("040507");
       colorColumnShowSaveReadLike = Colors.black87;
-      backgroundColorAppBar = Colors.white;
       colorLeadingAppbar = Colors.black;
       colorContainerPopualarMedia = Colors.white;
     } else {
       _themeKey = AppThemeKeys.dark;
-      backgroundColorAppBar = colorHexa("303030");
       colorContainerPopualarMedia = Colors.white24;
-      selectedItemColor = Colors.white;
+      // selectedItemColor = Colors.white;
       colorLeadingAppbar = Colors.white;
       colorImageBottomNavigationBarItem = Colors.white;
       colorComponentBottomProfile = Colors.white70;
@@ -77,7 +93,6 @@ class AppTheme extends ChangeNotifier {
       colorTitleContainerSpecialForYou = Colors.white54;
       colorContentContainerSpecialForYou = Colors.white;
       colorImageContainerSpecialForYou = Colors.white;
-
       colorTitleShowAvata = Colors.white;
       colorColumnShowSaveReadLike = Colors.white;
     }

@@ -29,11 +29,6 @@ AppTheme? theme;
     super.didChangeDependencies();
   }
 
-  @override
-  void didUpdateWidget(covariant ProfilePage oldWidget) {
-    // TODO: implement didUpdateWidget
-    super.didUpdateWidget(oldWidget);
-  }
 
   @override
   void initState() {
@@ -211,10 +206,9 @@ AppTheme? theme;
                       prefs.setBool("light", !value);
                   print('Set isLightMode: $isLightMode');
                   await theme?.switchTheme();
-                  setState(() {
-                    switchTheme = value;
-                    // theme?.switchTheme();
-                  });
+                  switchTheme = value;
+                  setState(() {});
+                  // Navigator.of(context).pushAndRemoveUntil(M, (route) => false)
                 },
               ),
             ),

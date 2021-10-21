@@ -6,9 +6,11 @@ import 'package:difiaz_space/view/search/search_page.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:intl/intl.dart';
 
+import 'color.dart';
+
 indexWidgetMainPage({required int index}){
   switch(index){
-    case 0: return HomePage();
+    case 0: return HomePage(index: 0,);
     case 1: return SearchPage();
     case 2: return FavoritePage();
     case 3: return ProfilePage();

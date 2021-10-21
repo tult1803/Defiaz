@@ -123,7 +123,7 @@ class _SearchPageState extends State<SearchPage> {
         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SearchDetail(search: content,)));
       },
       child: Container(
-        color: backgroundColorAppBar,
+        // color: backgroundColorAppBar,
         margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
         child: Column(
           children: [
