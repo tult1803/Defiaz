@@ -176,10 +176,10 @@ Widget slideWeight(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      containerText("$title",
+                      containerText("${title ?? ""}",
                           heightContainer: 55, fontSize: 17, maxLines: 2),
                       AutoSizeText(
-                        "$content",
+                        "${content ?? ""}",
                         style: const TextStyle(color: Colors.white70),
                         maxLines: 2,
                       ),

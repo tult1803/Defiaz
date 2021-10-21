@@ -35,45 +35,48 @@ class _CarouselSliderState extends State<SpecialNews> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        FutureBuilder(
-          future: getData(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return CarouselSlider.builder(
-                itemCount: dataSpecialNews!.length,
-                itemBuilder: (context, index, realIndex) {
-                  return slideHeight(
-                      context: context,
-                      id: dataSpecialNews![index].id,
-                      imgUrl: dataSpecialNews![index]
-                          .yoastHeadJson!
-                          .ogImage!
-                          .first
-                          .url,
-                      title: dataSpecialNews![index].title!.rendered,
-                      contentDetail: dataSpecialNews![index].content!.rendered,
-                      redirectUrl: dataSpecialNews![index].guid!.rendered,
-                      author: authorDemo,
-                      time: timeDemo,
-                      type: typeDemo,
-                      views: viewsDemo);
-                },
-                options: CarouselOptions(
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      currentPos = index;
-                    });
+        SizedBox(
+          height: 300,
+          child: FutureBuilder(
+            future: getData(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return CarouselSlider.builder(
+                  itemCount: dataSpecialNews!.length,
+                  itemBuilder: (context, index, realIndex) {
+                    return slideHeight(
+                        context: context,
+                        id: dataSpecialNews![index].id,
+                        imgUrl: dataSpecialNews![index]
+                            .yoastHeadJson!
+                            .ogImage!
+                            .first
+                            .url,
+                        title: dataSpecialNews![index].title!.rendered,
+                        contentDetail: dataSpecialNews![index].content!.rendered,
+                        redirectUrl: dataSpecialNews![index].guid!.rendered,
+                        author: authorDemo,
+                        time: timeDemo,
+                        type: typeDemo,
+                        views: viewsDemo);
                   },
-                  autoPlay: true,
-                  autoPlayAnimationDuration: const Duration(seconds: 3),
-                  viewportFraction: 0.7,
-                  aspectRatio: 1.3,
-                  initialPage: 0,
-                ),
-              );
-            }
-            return loadingContainer(MediaQuery.of(context).size);
-          },
+                  options: CarouselOptions(
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        currentPos = index;
+                      });
+                    },
+                    autoPlay: true,
+                    autoPlayAnimationDuration: const Duration(seconds: 3),
+                    viewportFraction: 0.75,
+                    aspectRatio: 1.3,
+                    initialPage: 0,
+                  ),
+                );
+              }
+              return loadingContainer(MediaQuery.of(context).size);
+            },
+          ),
         ),
         circleSlide(currentPos),
       ],
