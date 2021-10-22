@@ -43,12 +43,7 @@ class GetCategoriesBlogSearch {
             "Accept": "application/json",
             "Access-Control-Allow-Origin": "*",
           });
-
-      print( Uri.https(urlDefiaz, subUrl, {
-        "page": "$page",
-        "per_page": "$perPage",
-        "categories": "$search",
-      }));
+      print('Get API Search Posts: ${response.statusCode}');
       if (response.statusCode == 200) {
         return categoriesBlogFromJson(response.body);
       } else {
