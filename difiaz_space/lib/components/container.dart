@@ -167,7 +167,7 @@ Widget containerFavorite(context,
               imgUrl,
               width: 90,
               height: 90,
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
           ),
           Expanded(

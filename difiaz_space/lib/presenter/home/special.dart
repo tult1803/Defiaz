@@ -59,7 +59,7 @@ class _CarouselSliderState extends State<SpecialNews> {
                         author: authorDemo,
                         time: timeDemo,
                         type: typeDemo,
-                        views: viewsDemo);
+                        views: dataSpecialNews![index].countViews);
                   },
                   options: CarouselOptions(
                     onPageChanged: (index, reason) {

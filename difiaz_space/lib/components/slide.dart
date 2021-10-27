@@ -87,7 +87,7 @@ Widget slideHeight({context ,id,imgUrl, title, author, time, type, views, conten
                                   Flexible(
                                     flex: 1,
                                     child: AutoSizeText(
-                                      "$views",
+                                      "$views views",
                                       style: const TextStyle(
                                           color: Colors.white),
                                       overflow: TextOverflow.ellipsis,

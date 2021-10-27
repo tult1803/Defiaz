@@ -1,4 +1,5 @@
 
+import 'package:difiaz_space/model/model_data_categories_blog.dart';
 import 'package:difiaz_space/view/favorite/favorite_page.dart';
 import 'package:difiaz_space/view/home/home_page.dart';
 import 'package:difiaz_space/view/profile/profile_page.dart';
@@ -6,7 +7,6 @@ import 'package:difiaz_space/view/search/search_page.dart';
 import 'package:flutter_share/flutter_share.dart';
 import 'package:intl/intl.dart';
 
-import 'color.dart';
 
 indexWidgetMainPage({required int index}){
   switch(index){
@@ -19,7 +19,7 @@ indexWidgetMainPage({required int index}){
 
 //Format giá 100.000.000
 getFormatPrice(String price) {
-  final oCcy = new NumberFormat("#,##0.00", "en_US");
+  final oCcy = NumberFormat("#,##0.00", "en_US");
   return oCcy.format(double.parse("$price"));
 }
 
@@ -61,4 +61,18 @@ checkMessage(String message) {
     return "Nội dung đang trống";
   }
   return null;
+}
+
+
+//Sort data blog
+int sortPostViews(CategoriesBlog a, CategoriesBlog b) {
+  final propertyA = int.tryParse("${a.countViews}");
+  final propertyB = int.tryParse("${b.countViews}");
+  if (propertyA! < propertyB!) {
+    return 1;
+  } else if (propertyA > propertyB) {
+    return -1;
+  } else {
+    return 0;
+  }
 }

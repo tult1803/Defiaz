@@ -6,3 +6,5 @@ List<CategoriesBlog>? dataNewestVsViews70;
 List<CategoriesBlog>? dataNewestVsViews73;
 List<CategoriesBlog>? dataHotNews;
 List<CategoriesBlog>? dataSearchPage;
+List<CategoriesBlog>? dataFavorite;
+Map<String, dynamic>? mapNoti;
