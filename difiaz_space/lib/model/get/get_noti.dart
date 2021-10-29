@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:difiaz_space/model/model_data_noti.dart';
 import 'package:http/http.dart' as http;
 
 class GetNotification {

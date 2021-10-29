@@ -52,7 +52,7 @@ class _NotiAppBarState extends State<NotiAppBar> {
              if(index < 11) {
                int newIndex = mapNoti!.length - 1;
                     return containerNoti(
-                   title: "${mapNoti!.values.elementAt(newIndex - index)["content"]}",
+                   title: "${mapNoti!.values.elementAt(newIndex - index)["title"]}",
                    subTitle:
                    "${mapNoti!.values.elementAt(newIndex - index)["content"]}");
              }else {
@@ -69,20 +69,36 @@ class _NotiAppBarState extends State<NotiAppBar> {
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AutoSizeText(
-            "$title",
-            maxLines: 2,
-            style: const TextStyle(fontSize: 16),
-          ),
-          AutoSizeText(
-            "$subTitle",
-            maxLines: 2,
-            style: const TextStyle(color: Colors.black54),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: colorContainerPopualarMedia,
+        // border: Border.all(color: Colors.black12)
+        boxShadow: const [
+          BoxShadow(
+            color: Color.fromRGBO(0, 0, 0, 0.05),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: Offset(0, 0), // changes position of shadow
           ),
         ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AutoSizeText(
+              "$title",
+              maxLines: 2,
+              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 5),
+            AutoSizeText(
+              "$subTitle",
+              style:  TextStyle(color: colorTitleContainerSpecialForYou),
+            ),
+          ],
+        ),
       ),
     );
   }

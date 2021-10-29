@@ -187,11 +187,17 @@ Widget containerFavorite(context,
                 const SizedBox(
                   height: 10,
                 ),
-                AutoSizeText(
-                  "$author",
-                  maxLines: 1,
-                  style: TextStyle(
-                      color: colorSizeBoxFavorite, fontWeight: FontWeight.w500),
+                Row(
+                  children: [
+                    const Icon(Icons.remove_red_eye_outlined),
+                    const SizedBox(width: 5,),
+                    AutoSizeText(
+                      "$author",
+                      maxLines: 1,
+                      style: TextStyle(
+                          color: colorSizeBoxFavorite, fontWeight: FontWeight.w500),
+                    ),
+                  ],
                 ),
               ],
             ),
