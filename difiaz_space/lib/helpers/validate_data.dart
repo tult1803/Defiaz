@@ -8,9 +8,9 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:intl/intl.dart';
 
 
-indexWidgetMainPage({required int index}){
+indexWidgetMainPage({required int index, int? indexHome}){
   switch(index){
-    case 0: return HomePage(index: 0,);
+    case 0: return HomePage(index: indexHome ?? 0,);
     case 1: return SearchPage();
     case 2: return FavoritePage();
     case 3: return ProfilePage();

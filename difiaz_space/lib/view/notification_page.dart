@@ -2,6 +2,7 @@ import 'package:auto_size_text_pk/auto_size_text_pk.dart';
 import 'package:difiaz_space/components/component.dart';
 import 'package:difiaz_space/helpers/color.dart';
 import 'package:difiaz_space/helpers/data.dart';
+import 'package:difiaz_space/main_page.dart';
 import 'package:difiaz_space/model/get/get_noti.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +33,7 @@ class _NotiAppBarState extends State<NotiAppBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: leadingAppbar(context, colorIcon: colorLeadingAppbar),
+        leading: leadingAppbar(context, colorIcon: colorLeadingAppbar, widget: MainPage()),
         centerTitle: true,
         backgroundColor: backgroundColorAppBar,
         elevation: 0,

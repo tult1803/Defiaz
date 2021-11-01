@@ -1,12 +1,13 @@
 import 'package:difiaz_space/components/icon/defiaaz_icon_icons.dart';
+import 'package:difiaz_space/components/icon/icon_noti.dart';
 import 'package:difiaz_space/helpers/validate_data.dart';
-import 'package:difiaz_space/view/home/home_page.dart';
 import 'package:difiaz_space/view/list_app_bar.dart';
 import 'package:difiaz_space/view/notification_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'helpers/color.dart';
-
+import 'main.dart';
+int indexNoti = 0;
 class MainPage extends StatefulWidget {
   int? index;
 
@@ -24,12 +25,9 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _selectedIndex = 0;
-    _widget = HomePage(
-      index: widget.index,
-    );
+    _selectedIndex = indexNoti;
+    _widget = indexWidgetMainPage(index: _selectedIndex, indexHome: widget.index);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -46,19 +44,17 @@ class _MainPageState extends State<MainPage> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
-            child: GestureDetector(
-              onTap: () {
+            child: NamedIcon(
+              isCheck: isNewNoti,
+              iconData: DefiaazIcon.noti,
+              onTap: () async{
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                isNewNoti = false;
+                prefs.setBool("isNewNoti", false);
+                setState(() {});
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const NotiAppBar()));
               },
-              child: const Icon(DefiaazIcon.noti, size: 20,),
-              // child: Image.asset(
-              //   'images/noti.png',
-              //   fit: BoxFit.contain,
-              //   height: 20,
-              //   width: 20,
-              //   color: colorImageBottomNavigationBarItem,
-              // ),
             ),
           ),
           Padding(
@@ -77,31 +73,43 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const [
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Icon(DefiaazIcon.home, size: 25,),
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(
+                DefiaazIcon.home,
+                size: 25,
               ),
+            ),
             label: 'Trang chủ',
           ),
           BottomNavigationBarItem(
             icon: Padding(
               padding: EdgeInsets.all(8.0),
-              child: Icon(DefiaazIcon.search, size: 25,),
+              child: Icon(
+                DefiaazIcon.search,
+                size: 25,
+              ),
             ),
             label: 'Tìm kiếm',
           ),
           BottomNavigationBarItem(
             icon: Padding(
               padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.favorite_border_rounded, size: 25,),
+              child: Icon(
+                Icons.favorite_border_rounded,
+                size: 25,
+              ),
             ),
             label: 'Thích',
           ),
           BottomNavigationBarItem(
             icon: Padding(
               padding: EdgeInsets.all(8.0),
-              child: Icon(DefiaazIcon.profile, size: 25,),
+              child: Icon(
+                DefiaazIcon.profile,
+                size: 25,
+              ),
             ),
             label: 'Tài khoản',
           ),
@@ -111,6 +119,7 @@ class _MainPageState extends State<MainPage> {
         showSelectedLabels: true,
         onTap: (value) async {
           _selectedIndex = value;
+          indexNoti = value;
           _widget = await indexWidgetMainPage(index: _selectedIndex);
           setState(() {});
         },
